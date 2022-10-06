@@ -1,8 +1,9 @@
 package com.example.demo;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Song {
+public class Song implements Serializable {
   public UUID id;
   public String name;
   public String album;

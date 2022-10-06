@@ -1,9 +1,10 @@
 package com.example.demo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Artist {
+public class Artist implements Serializable {
   public UUID id;
   public String name;
   public String nacionality;

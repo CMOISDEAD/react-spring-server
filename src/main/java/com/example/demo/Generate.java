@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Generate {
+  Initialize init = new Initialize();
+
   // Data
   ArrayList<UUID> allArtistID = new ArrayList<>();
   ArrayList<UUID> allAlbumsID = new ArrayList<>();
@@ -11,35 +13,67 @@ public class Generate {
   ArrayList<Artist> artists = new ArrayList<>();
   ArrayList<Album> albums = new ArrayList<>();
   ArrayList<Song> songs = new ArrayList<>();
+  ArrayList<User> users = init.readUsers();
 
   // Populate all data
   public Generate() {
-    populate();
+    // populate();
   }
 
   // Getter and Setters
   public ArrayList<Artist> getArtists() {
+    this.artists = init.readArtists();
     return artists;
   }
 
   public ArrayList<Album> getAlbums() {
+    this.albums = init.readAlbums();
     return albums;
   }
 
   public ArrayList<Song> getSongs() {
+    this.songs = init.readSongs();
     return songs;
   }
 
   public ArrayList<UUID> getAllArtist() {
+    for (Artist artist : artists) {
+      allArtistID.add(artist.id);
+    }
     return allArtistID;
   }
 
   public ArrayList<UUID> getAllAlbums() {
+    for (Album album : albums) {
+      allAlbumsID.add(album.id);
+    }
     return allAlbumsID;
   }
 
   public ArrayList<UUID> getAllSongs() {
+    for (Song song : songs) {
+      allSongsID.add(song.id);
+    }
     return allSongsID;
+  }
+
+  public ArrayList<User> getAllUsers() {
+    ArrayList<User> list = new ArrayList<>();
+    for (User user : init.readUsers()) {
+      list.add(user);
+    }
+    return list;
+  }
+
+  public User login(User req) {
+    for (User user : users) {
+      if (user.username.equals(req.username)) {
+        if (user.password.equals(req.password)) {
+          return user;
+        }
+      }
+    }
+    return null;
   }
 
   // Methods
@@ -73,7 +107,9 @@ public class Generate {
     return null;
   }
 
-  // Populate all data
+  /*
+   * Esta funcion se usa para generar datos en caso se pierdan los serializados.
+   */
   public void populate() {
     // Artists
     Artist kendrick = new Artist("https://i.scdn.co/image/ab6761610000e5eb437b9e2a82505b3d93ff1022", "Kendrick Lamar",
@@ -182,5 +218,9 @@ public class Generate {
     this.allArtistID = allArtistID;
     this.allAlbumsID = allAlbumsID;
     this.allSongsID = allSongsID;
+
+    init.writeUsers(new User(true, "johan", "password", "johan@email.com"));
+    init.writeUsers(new User(false, "user", "password", "user@email.com"));
+    init.writeUsers(new User(true, "camilo", "password", "camilo@email.com"));
   }
 }

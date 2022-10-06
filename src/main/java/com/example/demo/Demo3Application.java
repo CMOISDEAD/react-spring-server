@@ -17,12 +17,18 @@ import java.util.UUID;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class Demo3Application {
+    // Initialize all the process
+    Initialize init = new Initialize();
+
+    // Generate provitional data
     Generate generator = new Generate();
 
+    // Main function
     public static void main(String[] args) {
         SpringApplication.run(Demo3Application.class, args);
     }
 
+    // Routes
     @GetMapping("/artist")
     public ArrayList<Artist> artists() {
         // Instancio un artista
@@ -64,6 +70,11 @@ public class Demo3Application {
         // Instancio un artista
         ArrayList<UUID> list = generator.getAllSongs();
         return list;
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> getAllUsers(@RequestBody(required = true) User req) {
+        return new ResponseEntity<User>(generator.login(req), HttpStatus.OK);
     }
 
     @PostMapping("/getSong")
