@@ -65,6 +65,33 @@ public class Generate {
     return list;
   }
 
+  // Methods
+  public void addSong(Song new_song) {
+    ArrayList<Artist> artists = init.readArtists();
+    for (Artist artist : artists) {
+      if (artist.name.equals(new_song.artist)) {
+        new_song.artist_id = artist.id;
+        artist.addSong(new_song);
+        init.writeAllArtist(artists);
+        init.writeSongs(new_song);
+      }
+    }
+  }
+
+  public void addArtist(Artist new_artist) {
+    init.writeArtist(new_artist);
+  }
+
+  public void addAlbum(Album new_album) {
+    ArrayList<Artist> artists = init.readArtists();
+    for (Artist artist : artists) {
+      new_album.artist_id = artist.id;
+      artist.addAlbum(new_album);
+      init.writeAllArtist(artists);
+      init.writeAlbums(new_album);
+    }
+  }
+
   public User login(User req) {
     for (User user : users) {
       if (user.username.equals(req.username)) {
@@ -76,7 +103,6 @@ public class Generate {
     return null;
   }
 
-  // Methods
   public Song searchSong(String id) {
     for (Song song : songs) {
       String one = song.id.toString();
@@ -98,7 +124,7 @@ public class Generate {
   }
 
   public Artist searchArtist(String id) {
-    for (Artist artist : artists) {
+    for (Artist artist : init.readArtists()) {
       String one = artist.id.toString();
       if (one.equals(id)) {
         return artist;
@@ -219,8 +245,17 @@ public class Generate {
     this.allAlbumsID = allAlbumsID;
     this.allSongsID = allSongsID;
 
-    init.writeUsers(new User(true, "johan", "password", "johan@email.com"));
-    init.writeUsers(new User(false, "user", "password", "user@email.com"));
-    init.writeUsers(new User(true, "camilo", "password", "camilo@email.com"));
+    init.writeSongs(crown);
+    init.writeSongs(gnat);
+    init.writeSongs(twiy);
+    init.writeSongs(novaseline);
+    init.writeSongs(stronger);
+    init.writeSongs(sicko);
+
+    init.writeArtist(kendrick);
+    init.writeArtist(eminem);
+    init.writeArtist(nas);
+    init.writeArtist(ice);
+    init.writeArtist(mfdoom);
   }
 }

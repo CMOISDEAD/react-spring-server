@@ -152,4 +152,16 @@ public class Initialize implements Serializable {
       i.printStackTrace();
     }
   }
+
+  public void writeAllArtist(ArrayList<Artist> artists) {
+    try {
+      FileOutputStream fileOut = new FileOutputStream(ARTISTS_PATH);
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(artists);
+      out.close();
+      fileOut.close();
+    } catch (IOException i) {
+      i.printStackTrace();
+    }
+  }
 }

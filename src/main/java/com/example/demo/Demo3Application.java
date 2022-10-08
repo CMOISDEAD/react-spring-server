@@ -72,6 +72,12 @@ public class Demo3Application {
         return list;
     }
 
+    @PostMapping("/addSong")
+    public ResponseEntity<Song> addSong(@RequestBody(required = true) Song song) {
+        generator.addSong(song);
+        return new ResponseEntity<Song>(song, HttpStatus.OK);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<User> getAllUsers(@RequestBody(required = true) User req) {
         return new ResponseEntity<User>(generator.login(req), HttpStatus.OK);
