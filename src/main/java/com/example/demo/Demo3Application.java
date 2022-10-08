@@ -78,6 +78,18 @@ public class Demo3Application {
         return new ResponseEntity<Song>(song, HttpStatus.OK);
     }
 
+    @PostMapping("/addArtist")
+    public ResponseEntity<Artist> addArtist(@RequestBody(required = true) Artist artist) {
+        generator.addArtist(artist);
+        return new ResponseEntity<Artist>(artist, HttpStatus.OK);
+    }
+
+    @PostMapping("/addAlbum")
+    public ResponseEntity<Album> addAlbum(@RequestBody(required = true) Album album) {
+        generator.addAlbum(album);
+        return new ResponseEntity<Album>(album, HttpStatus.OK);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<User> getAllUsers(@RequestBody(required = true) User req) {
         return new ResponseEntity<User>(generator.login(req), HttpStatus.OK);

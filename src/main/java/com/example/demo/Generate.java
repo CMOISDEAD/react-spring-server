@@ -85,10 +85,11 @@ public class Generate {
   public void addAlbum(Album new_album) {
     ArrayList<Artist> artists = init.readArtists();
     for (Artist artist : artists) {
-      new_album.artist_id = artist.id;
-      artist.addAlbum(new_album);
-      init.writeAllArtist(artists);
-      init.writeAlbums(new_album);
+      if (artist.id.equals(new_album.artist_id)) {
+        artist.addAlbum(new_album);
+        init.writeAllArtist(artists);
+        init.writeAlbums(new_album);
+      }
     }
   }
 
@@ -257,5 +258,10 @@ public class Generate {
     init.writeArtist(nas);
     init.writeArtist(ice);
     init.writeArtist(mfdoom);
+
+    init.writeAlbums(morale);
+    init.writeAlbums(mtmb);
+    init.writeAlbums(illmatic);
+    init.writeAlbums(tamw);
   }
 }
