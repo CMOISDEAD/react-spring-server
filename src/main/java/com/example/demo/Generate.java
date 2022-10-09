@@ -79,6 +79,7 @@ public class Generate {
   }
 
   public void addArtist(Artist new_artist) {
+    new_artist.id = UUID.randomUUID();
     init.writeArtist(new_artist);
   }
 
