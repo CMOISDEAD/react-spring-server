@@ -68,6 +68,14 @@ public class Generate {
   // Methods
   public void addSong(Song new_song) {
     ArrayList<Artist> artists = init.readArtists();
+    ArrayList<Album> albums = init.readAlbums();
+    new_song.id = UUID.randomUUID();
+    for (Album album : albums) {
+      if (album.name.equals(new_song.album)) {
+        album.addSong(new_song);
+        init.writeAllAlbums(albums);
+      }
+    }
     for (Artist artist : artists) {
       if (artist.name.equals(new_song.artist)) {
         new_song.artist_id = artist.id;
@@ -76,6 +84,7 @@ public class Generate {
         init.writeSongs(new_song);
       }
     }
+
   }
 
   public void addArtist(Artist new_artist) {
@@ -85,6 +94,7 @@ public class Generate {
 
   public void addAlbum(Album new_album) {
     ArrayList<Artist> artists = init.readArtists();
+    new_album.id = UUID.randomUUID();
     for (Artist artist : artists) {
       if (artist.id.equals(new_album.artist_id)) {
         artist.addAlbum(new_album);
