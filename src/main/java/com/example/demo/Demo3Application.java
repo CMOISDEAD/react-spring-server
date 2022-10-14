@@ -91,8 +91,8 @@ public class Demo3Application {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> getAllUsers(@RequestBody(required = true) User req) {
-        return new ResponseEntity<User>(generator.login(req), HttpStatus.OK);
+    public HttpStatus getAllUsers(@RequestBody(required = true) User req) {
+        return generator.login(req);
     }
 
     @PostMapping("/getSong")

@@ -3,6 +3,8 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
+
 public class Generate {
   Initialize init = new Initialize();
 
@@ -104,15 +106,15 @@ public class Generate {
     }
   }
 
-  public User login(User req) {
+  public HttpStatus login(User req) {
     for (User user : users) {
       if (user.username.equals(req.username)) {
         if (user.password.equals(req.password)) {
-          return user;
+          return HttpStatus.OK;
         }
       }
     }
-    return null;
+    return HttpStatus.NOT_FOUND;
   }
 
   public Song searchSong(String id) {
