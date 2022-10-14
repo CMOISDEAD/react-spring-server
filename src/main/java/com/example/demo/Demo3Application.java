@@ -90,9 +90,19 @@ public class Demo3Application {
         return new ResponseEntity<Album>(album, HttpStatus.OK);
     }
 
+    @PostMapping("/addUserList")
+    public void addUserList(@RequestBody(required = true) User user) {
+        generator.addUserList(user);
+    }
+
     @PostMapping("/login")
-    public HttpStatus getAllUsers(@RequestBody(required = true) User req) {
-        return generator.login(req);
+    public ResponseEntity<User> getAllUsers(@RequestBody(required = true) User req) {
+        User res_user = generator.login(req);
+        HttpStatus status = HttpStatus.OK;
+        if (res_user == null) {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<User>(res_user, status);
     }
 
     @PostMapping("/getSong")

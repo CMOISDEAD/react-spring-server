@@ -3,8 +3,9 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import org.springframework.http.HttpStatus;
+// import org.springframework.http.HttpStatus;
 
+// FIX: Shit methods
 public class Generate {
   Initialize init = new Initialize();
 
@@ -106,15 +107,25 @@ public class Generate {
     }
   }
 
-  public HttpStatus login(User req) {
+  // TODO: This method is uncompleted
+  public void addUserList(User req) {
+    for (User user : users) {
+      if (user.username.equals(req.username)) {
+        user.user_playlist = req.user_playlist;
+        init.writeAllUsers(users);
+      }
+    }
+  }
+
+  public User login(User req) {
     for (User user : users) {
       if (user.username.equals(req.username)) {
         if (user.password.equals(req.password)) {
-          return HttpStatus.OK;
+          return user;
         }
       }
     }
-    return HttpStatus.NOT_FOUND;
+    return null;
   }
 
   public Song searchSong(String id) {

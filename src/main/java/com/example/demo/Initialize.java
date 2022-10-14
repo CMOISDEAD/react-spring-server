@@ -4,18 +4,14 @@ import java.util.ArrayList;
 import java.io.*;
 
 public class Initialize implements Serializable {
-  final public String ARTISTS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/aritsts.ser";
-  final public String ALBUMS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/albums.ser";
-  final public String SONGS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/songs.ser";
-  final public String USERS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/users.ser";
-  // final public String ARTISTS_PATH =
-  // "/home/camilo/Documents/git/react-spring-server/src/main/resources/data/aritsts.ser";
-  // final public String ALBUMS_PATH =
-  // "/home/camilo/Documents/git/react-spring-server/src/main/resources/data/albums.ser";
-  // final public String SONGS_PATH =
-  // "/home/camilo/Documents/git/react-spring-server/src/main/resources/data/songs.ser";
-  // final public String USERS_PATH =
-  // "/home/camilo/Documents/git/react-spring-server/src/main/resources/data/users.ser";
+  // final public String ARTISTS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/aritsts.ser";
+  // final public String ALBUMS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/albums.ser";
+  // final public String SONGS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/songs.ser";
+  // final public String USERS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/users.ser";
+  final public String ARTISTS_PATH = "/home/camilo/Documents/git/react-spring-server/src/main/resources/data/aritsts.ser";
+  final public String ALBUMS_PATH = "/home/camilo/Documents/git/react-spring-server/src/main/resources/data/albums.ser";
+  final public String SONGS_PATH = "/home/camilo/Documents/git/react-spring-server/src/main/resources/data/songs.ser";
+  final public String USERS_PATH = "/home/camilo/Documents/git/react-spring-server/src/main/resources/data/users.ser";
 
   public ArrayList<Artist> readArtists() {
     ArrayList<Artist> list = new ArrayList<Artist>();
@@ -175,6 +171,18 @@ public class Initialize implements Serializable {
       FileOutputStream fileOut = new FileOutputStream(ALBUMS_PATH);
       ObjectOutputStream out = new ObjectOutputStream(fileOut);
       out.writeObject(albums);
+      out.close();
+      fileOut.close();
+    } catch (IOException i) {
+      i.printStackTrace();
+    }
+  }
+
+    public void writeAllUsers(ArrayList<User> users) {
+    try {
+      FileOutputStream fileOut = new FileOutputStream(USERS_PATH);
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(users);
       out.close();
       fileOut.close();
     } catch (IOException i) {
