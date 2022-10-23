@@ -1,8 +1,11 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.io.*;
+import com.example.demo.Classes.*;
 
+@SuppressWarnings("unchecked")
 public class Initialize implements Serializable {
   final public String ARTISTS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/aritsts.ser";
   final public String ALBUMS_PATH = "/home/camilo/Documents/git/react-spring/backend/src/main/resources/data/albums.ser";
@@ -55,12 +58,12 @@ public class Initialize implements Serializable {
   /*
    * Read songs data
    */
-  public ArrayList<Song> readSongs() {
-    ArrayList<Song> list = new ArrayList<>();
+  public LinkedList<Song> readSongs() {
+    LinkedList<Song> list = new LinkedList<Song>();
     try {
       FileInputStream fileIn = new FileInputStream(SONGS_PATH);
       ObjectInputStream in = new ObjectInputStream(fileIn);
-      list = (ArrayList<Song>) in.readObject();
+      list = (LinkedList<Song>) in.readObject();
       in.close();
       fileIn.close();
     } catch (IOException e) {
@@ -111,8 +114,8 @@ public class Initialize implements Serializable {
    * Write artist data
    */
   public void writeSongs(Song song) {
-    ArrayList<Song> songs = readSongs();
-    songs.add(song);
+    LinkedList<Song> songs = readSongs();
+    songs.add(song); // FIX: WTF?
     try {
       FileOutputStream fileOut = new FileOutputStream(SONGS_PATH);
       ObjectOutputStream out = new ObjectOutputStream(fileOut);

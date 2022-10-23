@@ -1,5 +1,11 @@
-/home/camilo/IdeaProjects/demo3/src/main/java/com/example/demo/Artist.java
-/home/camilo/IdeaProjects/demo3/src/main/java/com/example/demo/Demo3Application.java
-/home/camilo/IdeaProjects/demo3/src/main/java/com/example/demo/Song.java
-/home/camilo/IdeaProjects/demo3/src/main/java/com/example/demo/Album.java
-/home/camilo/IdeaProjects/demo3/src/main/java/com/example/demo/Generate.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Classes/Album.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Classes/Song.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Structures/DoublyLinkedList.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/ListRequest.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Classes/Artist.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Demo3Application.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Structures/HashMap.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Structures/Tree.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Classes/User.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Initialize.java
+/home/camilo/Documents/git/react-spring/backend/src/main/java/com/example/demo/Generate.java

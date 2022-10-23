@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Map;
 import java.util.UUID;
+
+import com.example.demo.Classes.*;
 
 @SpringBootApplication
 @RestController
@@ -37,9 +41,9 @@ public class Demo3Application {
     }
 
     @GetMapping("/songs")
-    public ArrayList<Song> songs() {
+    public LinkedList<Song> songs() {
         // Instancio un artista
-        ArrayList<Song> list = generator.getSongs();
+        LinkedList<Song> list = generator.getSongs();
         return list;
     }
 
@@ -91,18 +95,27 @@ public class Demo3Application {
     }
 
     @PostMapping("/addUserList")
-    public void addUserList(@RequestBody(required = true) User user) {
-        generator.addUserList(user);
+    public void addUserList(@RequestBody(required = true) ListRequest data) {
+        generator.addUserList(data.name, data.song);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> getAllUsers(@RequestBody(required = true) User req) {
+    public ResponseEntity<User> login(@RequestBody(required = true) User req) {
         User res_user = generator.login(req);
         HttpStatus status = HttpStatus.OK;
         if (res_user == null) {
             status = HttpStatus.NOT_FOUND;
         }
         return new ResponseEntity<User>(res_user, status);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<Boolean> register(@RequestBody(required = true) User req) {
+        HttpStatus status = HttpStatus.OK;
+        if (!generator.register(req)) {
+            status = HttpStatus.NOT_FOUND;
+        }
+        return new ResponseEntity<Boolean>(generator.register(req), status);
     }
 
     @PostMapping("/getSong")
