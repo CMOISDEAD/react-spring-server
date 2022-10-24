@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 import com.example.demo.Classes.Song;
 
 // Node class
-class Node implements Serializable {
+private class Node implements Serializable {
   public Song song;
   public Node next;
   public Node prev;

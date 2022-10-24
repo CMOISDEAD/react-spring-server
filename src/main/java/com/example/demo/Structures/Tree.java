@@ -6,7 +6,7 @@ import com.example.demo.Classes.Artist;
  * NOTE: Tipo de arbol BST Recursivo.
  */
 
-class Node {
+private class Node {
   Artist data;
   Node left;
   Node right;
